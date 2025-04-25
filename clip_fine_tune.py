@@ -188,9 +188,8 @@ def main():
     # Initialize CLIP
     processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
     model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
-
     # Set up device (in my case, Apple Metal, but change to CUDA if using NVIDIA GPU)
-    global device = torch.device('mps' if torch.backends.mps.is_available() else 'cpu')
+    device = torch.device('mps' if torch.backends.mps.is_available() else 'cpu')
     print(f"Using {device}.")
 
     # Freeze base model parameters
@@ -260,5 +259,5 @@ def main():
                 'loss': avg_epoch_loss,
             }, f'clip_checkpoint_epoch_{epoch + 1}.pt')
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     main()
